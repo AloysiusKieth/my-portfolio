@@ -1,0 +1,175 @@
+.wrapper{
+		& header{
+		width: 40vw;
+		background: $header-bg;
+		padding: 30px 0;
+
+		& .header-pos{
+			position: fixed;
+			top: 10px;
+			left: 0;
+			bottom: 80px;
+			width: 39vw;
+			padding: 20px 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		& .logo{
+			//@include hide-text();
+			color: $white;
+			//background: pink;
+			max-width: 40vw;
+			text-align: center;
+			// TODO:
+			// Add img of logo
+			// background:
+			// 	url(/assets/img/logo.png)
+			// 	no-repeat
+			// 	center/ contain;
+			height: 80px;
+			padding: 0;
+			margin: 0;
+		}
+
+		& .site-nav{
+			& ul{
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				text-align: center;
+				& li{
+					font-size: 26px;
+					margin-bottom: 10px;
+					&:last-child{margin-bottom: 0}
+				}
+			}
+			& .link.active{
+				color: darken($white, 30%);
+			}
+		}
+		& .email-link{
+			display: block;
+			text-align: center;
+		}
+		& .social-links{
+			//TODO:
+			// pinterest, codepen?, behance, github
+			display: inline;
+
+		}
+		& .short-bio{
+			display: block;
+			text-align: center;
+			color: $white;
+			& h5{
+				margin-bottom: 5px;
+			}
+		}
+		& .mobile-nav-toggle{
+			display: none;
+			width: 50px; 
+			height: 50px;
+			//background: pink;
+			margin-right: 20px;
+			align-items: center;
+			cursor: pointer;
+
+			// icon for collapsed menu
+			& span,
+			& span:before,
+			& span:after{
+				content: "";
+				display: block;
+				width: 3rem;
+				height: 2px;
+				background: $white;
+				position: absolute;
+				@include transition(all 0.3s ease-in-out);
+			}
+			& span:before{
+				top: -1rem;
+			}	
+			& span:after{
+				top: 1rem;
+			}
+			&.is-open span{
+				background: transparent;
+
+			}
+			&.is-open span:before,
+			&.is-open span:after{
+				transform-origin: center;
+				transform: rotate(-45deg);
+				top: -.1rem;
+				//background: $blue;
+			}
+
+			&.is-open span:after{
+				transform: rotate(45deg);
+			}
+		}
+	}
+	// for mobile navigation
+	.mobile-nav{
+		display: none;
+		position: absolute;
+		width: 100%;
+		//background: $header-bg;
+		padding: 15px 0 20px;
+		z-index: 1;
+		float: right;
+		& ul{
+			list-style: none;
+			margin-bottom: 10px;
+			padding: 20px;
+			float: right;
+		}
+		& li{
+			float: left;
+		}
+		& li a {
+		    display: inline;
+		    color: white;
+		    text-align: center;
+		    padding: 14px 10px;
+		    text-decoration: none;
+		}
+		& .link.active{
+			color: darken($white, 30%);
+		}
+	}
+
+}
+
+
+@media (max-width: 775px){
+	.wrapper {
+		& header{
+		width: auto;
+		padding: 20px 0;
+		& .header-pos{
+			position: relative;
+			width: auto;
+			height: 200px;
+			top: auto;
+			bottom: 100px;
+			left: auto;
+			flex-direction: row;
+			align-items: center;
+
+		}
+		& .site-nav,
+		  .email-link,
+		  .short-bio{display: none;}
+
+		& .logo{height: 45px;}
+		//& .mobile-nav-toggle{display: flex;}	
+		}
+	& .mobile-nav{
+			display: inline;
+	}
+}
+}
+

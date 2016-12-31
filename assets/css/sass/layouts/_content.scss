@@ -1,0 +1,147 @@
+@mixin row($color){
+		display: flex;
+		  	justify-content: center;
+		 	flex-direction: column;
+		    margin-bottom: 25px;    
+		    height: 150px;
+		    width: 60vw;
+		    background: $color;
+		    cursor: pointer;
+		    @include transition(all 0.3s ease);
+		    	box-shadow: 
+		  		0 4px 8px 0 rgba(0, 0, 0, 0.2)
+		  		, 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+		   &:hover{
+		    	background: darken($color, 5%);
+		    }
+		   & .title,
+		     .description{
+			color: $primary-text;
+			margin: 5px;
+			padding: 5px;
+			line-height: 1.5;
+			letter-spacing: 3px;
+			text-decoration: none;
+			text-align: center;
+			}
+}
+
+
+
+.wrapper{
+	display: flex;
+	min-height: 100vh;
+	background: $content-bg;
+	@media (max-width: 775px){
+		display: block;
+	}
+	& .section{
+		display: none;
+	}
+
+	& .home.section{
+		margin-left: 10px;
+		& .title{
+			display: block;
+			color: $primary-text;
+			background: $primary-text-bg;
+
+		}	
+		& .content{
+			display: block;
+			color: $primary-text;
+			background: $primary-text-bg;
+			clear: both;
+		}
+		& .img{
+			display: block;
+			max-width: 100%;
+			max-height: 100%;
+			background: $black;
+			opacity: 0.5;
+			margin: auto;
+			clear: both;
+		}
+	}
+
+	& .works.section{
+		& .row-1{
+		  	display: flex;
+		  	justify-content: center;
+		 	flex-direction: column;
+		    margin: 50px auto;      
+		    height: 150px;
+		    width: 60vw;
+		    background: #F3F2F2;
+		    cursor: pointer;
+		    @include transition(all 0.3s ease);
+		    	box-shadow: 
+		  		0 4px 8px 0 rgba(0, 0, 0, 0.2)
+		  		, 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+		   &:hover{
+		    	background: darken(#F3F2F2, 5%);
+		    }
+		   & .title,
+		     .description{
+			color: $primary-text;
+			margin: 5px;
+			padding: 5px;
+			line-height: 1.5;
+			letter-spacing: 3px;
+			text-decoration: none;
+			text-transform: uppercase;
+			text-align: center;
+			}
+		}
+	}
+
+
+	& .contact.section{
+		& .email{
+		  @include row($red);
+		}
+		& .github{
+		  @include row($blue);
+		}
+		& .behance{
+		  @include row($yellow);
+		}
+		& .pinterest{
+		  @include row($green);
+		}
+	}
+}
+
+
+@media (max-width: 775px){
+	.wrapper{
+		height: 100%;
+		& .home.section{
+			margin-left: 0;
+		}
+		& .works.section{
+			& .item-container{
+				width: 100%;
+			}
+		}
+		& .contact.section{
+			& .email,
+			& .github,
+			& .behance,
+			& .pinterest{
+				width: 100%;
+			}
+		}
+	}
+}
+
+@media (min-width: 2560px){
+	.wrapper{
+		& .home.section{
+			& .title,
+			  .content{
+				font-size: 60px;
+			}
+		}
+	}
+}
